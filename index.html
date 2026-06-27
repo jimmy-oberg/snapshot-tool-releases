@@ -60,6 +60,16 @@
   .meta a { color: #9bb6ff; text-decoration: none; }
   .meta a:hover { text-decoration: underline; }
 
+  /* Instruktioner under nedladdningsknappen */
+  .steps { max-width: 560px; margin: 30px auto 0; text-align: left;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; }
+  .steps h4 { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; margin-bottom: 12px; font-weight: 700; }
+  .steps ol { margin: 0; padding-left: 20px; }
+  .steps li { margin: 8px 0; color: #cfd6e2; font-size: 14.5px; line-height: 1.5; }
+  .steps li b { color: var(--text); }
+  .steps code { background: #11141a; border: 1px solid var(--border); border-radius: 5px; padding: 1px 7px; font-family: ui-monospace, monospace; font-size: 12.5px; color: #cfd6e2; }
+  .steps .note { margin-top: 12px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; line-height: 1.5; }
+
   /* App-skärmdump */
   .shot {
     margin: 56px auto 0; max-width: 880px; border-radius: 14px; overflow: hidden;
@@ -97,6 +107,16 @@
         <div class="meta" id="meta">Hämtar senaste versionen…</div>
       </div>
 
+      <div class="steps">
+        <h4>Så här kommer du igång</h4>
+        <ol>
+          <li><b>Packa upp</b> zip-filen — högerklick → <b>Extrahera alla…</b> (välj t.ex. Skrivbordet).</li>
+          <li>Öppna mappen och dubbelklicka <code>Snapshot Annotator.exe</code>.</li>
+          <li>Visar Windows <b>"Windows skyddade din dator"</b>? Klicka <b>Mer info → Kör ändå</b>. Appen är osignerad men säker.</li>
+        </ol>
+        <div class="note">Tips: högerklicka exe:n → <b>Fäst i Aktivitetsfältet</b> för snabb åtkomst. Appen lever i systemfältet och fångar skärmen med <b>Ctrl + Shift + 4</b>.</div>
+      </div>
+
       <div class="shot">
         <img src="screenshot.png" alt="Snapshot Annotator – editorn med verktyg och bakgrunder">
       </div>
@@ -108,7 +128,7 @@
   </div>
 
 <script>
-  // Hämta senaste releasen och peka knappen direkt på .exe-filen
+  // Hämta senaste releasen och peka knappen på ZIP-filen (portabel app)
   const REPO = 'jimmy-oberg/snapshot-tool-releases';
   const btn = document.getElementById('downloadBtn');
   const meta = document.getElementById('meta');
@@ -116,14 +136,14 @@
   fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(rel => {
-      const exe = (rel.assets || []).find(a => a.name.toLowerCase().endsWith('.exe'));
-      if (exe) {
-        btn.href = exe.browser_download_url;
-        const mb = (exe.size / 1048576).toFixed(0);
+      const zip = (rel.assets || []).find(a => a.name.toLowerCase().endsWith('.zip'));
+      if (zip) {
+        btn.href = zip.browser_download_url;
+        const mb = (zip.size / 1048576).toFixed(0);
         const date = new Date(rel.published_at).toLocaleDateString('sv-SE');
-        meta.innerHTML = `${rel.tag_name} · ${mb} MB · ${date} &nbsp;·&nbsp; <a href="https://github.com/${REPO}/releases" target="_blank" rel="noopener">versionshistorik</a>`;
+        meta.innerHTML = `${rel.tag_name} · ZIP · ${mb} MB · ${date} &nbsp;·&nbsp; <a href="https://github.com/${REPO}/releases" target="_blank" rel="noopener">versionshistorik</a>`;
       } else {
-        meta.textContent = 'Ingen installer hittades i senaste releasen ännu.';
+        meta.textContent = 'Ingen nedladdning hittades i senaste releasen ännu.';
       }
     })
     .catch(() => {
