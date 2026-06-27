@@ -60,35 +60,17 @@
   .meta a { color: #9bb6ff; text-decoration: none; }
   .meta a:hover { text-decoration: underline; }
 
-  /* App-mockup */
+  /* App-skärmdump */
   .shot {
-    margin: 56px auto 0; max-width: 860px; border-radius: 16px; overflow: hidden;
+    margin: 56px auto 0; max-width: 880px; border-radius: 14px; overflow: hidden;
     border: 1px solid var(--border); background: #1a1d23;
     box-shadow: 0 40px 90px rgba(0,0,0,.55);
   }
-  .shot .bar { display: flex; gap: 7px; padding: 12px 14px; background: #23272f; border-bottom: 1px solid var(--border); }
-  .shot .bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-  .shot .bar i:nth-child(1){ background:#ff5f57 } .shot .bar i:nth-child(2){ background:#febc2e } .shot .bar i:nth-child(3){ background:#28c840 }
-  .shot .canvas { height: 300px; display: grid; place-items: center;
-    background:
-      radial-gradient(circle at 25% 30%, rgba(122,166,255,.5), transparent 45%),
-      radial-gradient(circle at 80% 25%, rgba(192,140,255,.45), transparent 45%),
-      radial-gradient(circle at 55% 95%, rgba(255,158,196,.4), transparent 50%),
-      #1b2030; }
-  .shot .canvas .frame { width: 64%; height: 62%; border-radius: 12px; background: #fff;
-    box-shadow: 0 24px 50px rgba(0,0,0,.4); display: grid; place-items: center; color: #aeb6c2; font-size: 13px; }
+  .shot img { display: block; width: 100%; height: auto; }
 
-  /* Features */
-  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 80px 0 40px; }
-  .feature { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
-  .feature .ic { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; margin-bottom: 14px;
-    background: rgba(91,140,255,.15); color: #9bb6ff; }
-  .feature h3 { font-size: 16px; margin-bottom: 6px; }
-  .feature p { color: var(--muted); font-size: 14px; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; padding: 50px 0 40px; border-top: 1px solid var(--border); margin-top: 70px; }
 
-  footer { color: var(--muted); font-size: 13px; text-align: center; padding: 50px 0 40px; border-top: 1px solid var(--border); margin-top: 40px; }
-
-  @media (max-width: 720px) { .features { grid-template-columns: 1fr; } header nav { display: none; } }
+  @media (max-width: 720px) { header nav { display: none; } }
 </style>
 </head>
 <body>
@@ -97,7 +79,6 @@
     <header>
       <div class="brand"><span class="dot"></span> Snapshot Annotator</div>
       <nav>
-        <a href="#features">Funktioner</a>
         <a href="https://github.com/jimmy-oberg/snapshot-tool-releases/releases" target="_blank" rel="noopener">Alla versioner</a>
       </nav>
     </header>
@@ -117,26 +98,7 @@
       </div>
 
       <div class="shot">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <div class="canvas"><div class="frame">din skärmdump · annoterad · på snygg bakgrund</div></div>
-      </div>
-    </section>
-
-    <section class="features" id="features">
-      <div class="feature">
-        <div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
-        <h3>Annotera blixtsnabbt</h3>
-        <p>Pilar, rutor, text, numrerade steg, bockar och kryss — med ångra/gör om och kopiera direkt.</p>
-      </div>
-      <div class="feature">
-        <div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
-        <h3>Vackra bakgrunder</h3>
-        <p>Mjuka mesh-gradienter med padding och rundade hörn. Auto-läget matchar bildens färger.</p>
-      </div>
-      <div class="feature">
-        <div class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div>
-        <h3>Flera bilder & sudda</h3>
-        <p>Kombinera upp till tre skärmdumpar på samma bakgrund och pixelera känslig information.</p>
+        <img src="screenshot.png" alt="Snapshot Annotator – editorn med verktyg och bakgrunder">
       </div>
     </section>
 
